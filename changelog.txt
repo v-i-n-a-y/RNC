@@ -1,0 +1,40 @@
+Rocket Nozzle Calculator - Changelog
+
+17/05/21
+
+Made by Vinay Williams
+
+
+    - Main nozzle calculations moved to 'calculations.m'
+    - Method of Characteristics Solver in 'moc.m'
+    - Ambient Pressure Input Removed in place of operational altitude input
+    - Rao Solver File created 'rao.m' with placeholder output
+    - The majority of nozzle parameters are now outputted at the end of the
+      the script by 'diagnostics.m'
+    - Excel Input added for input values (flags need to be added)
+    - Flag for excel input versus inscript definition of variables of flags
+      added
+    - Flag for contour solver method added
+    - Flag for plotting added
+
+19/05/21 
+
+Made by Vinay Williams
+
+    - Function created to export contour points
+    - Functionality for outputting points to work with ANSYS and SOLIDWORKS
+    added
+    - CSV point output added
+    - nozzle.xpoints updated to nozzle.xpoints.outer and nozzle.xpoints.inner
+    - same alteration as previous point but for nozzle.ypoints
+    - wall thickness input added which is stored in nozzle.wall_thickness
+    - wall thickness is added to the contour points' y value
+
+22/05/21
+
+Made by Vinay Williams
+
+    - Added Rao solver
+    - Finished the plot and plot save flag implementation
+
+
