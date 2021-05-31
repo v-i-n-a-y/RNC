@@ -19,7 +19,7 @@ plt = 1;                % 1   = Yes
 plt_save = 1;                % 1   = Yes
                         % <1> = No
                         
-contour_solver = 1;     % 1 = Method of Characteristics
+contour_solver = 2;     % 1 = Method of Characteristics
                         % 2 = Rao (Not operational yet)
                         % 3 = Conical
                        
