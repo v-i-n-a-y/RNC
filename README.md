@@ -1,11 +1,19 @@
 # RNC - Rocket Nozzle Calculator
 
-Initially created as a tool for students who are learning about rocket nozzles calculations and are not familiar with coding to easily understand.
+- Created as a tool for students who are learning about rocket nozzles calculations and are not familiar with coding to easily understand. 
 
-Written initially for the Kingston University Rocket Engineering group (KURE) and students specialising in aerospace engineering. 
 
-Please note this calculations performed within this code is not necessarily right and you should ensure they are correct before using them. If any incorrect areas arise please contact me know and I will make the changes. 
+- It takes operational conditions of the nozzles to calculate the dimensions as necessary and outputs the characteristics in a text file and a file with coordinates for the contour with the ability to adjust the output file for ANSYS, solidworks or CSV format. 
 
-Please cite my work as appropriate, the following can be used depending on your reference style: 
+- There are plans for the addition of performance curves (pressure, mach number and temperature), the integration of aerospike nozzle calculations, regenerative cooling calculations and 3D model output. *There is no formal timeline on these additions*
 
-  ***Williams, V. 2021. Rocket Nozzle Calculator. [MATLAB script] https://github.com/v-i-n-a-y/RNC/ (insert appropriate year here)***
+
+- Written initially for the Kingston University Rocket Engineering group (KURE) and students specialising in aerospace engineering. 
+
+
+- Note calculations performed within this code are not necessarily correct and you should ensure they are before use. If any incorrect areas arise please contact me  and I will make the changes.
+
+
+- Please cite my work as appropriate, the following can be used depending on your reference style: 
+    
+    ***Williams, V. 2021. Rocket Nozzle Calculator. [MATLAB script] https://github.com/v-i-n-a-y/RNC/ (insert year)***
