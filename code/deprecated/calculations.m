@@ -1,5 +1,5 @@
 % Conversion
-M = M/1000;                 % Conver to kilograms
+M = M/1000;                 % Convert to kilograms
 pc = pc*100000;             % Convert to pascals
 R = R/M;                    % Universal gas constant/molar mass
 alt = alt *1000;            % Convert to meters
