@@ -8,8 +8,10 @@ Written by Vinay Williams
 Started on 17/02/21
 
 Updated on:
-              17/05/21 (Changelog entry made)
-	      19/05/21 (Changelog entry made)
+		17/05/21 (Changelog entry made)
+	      	19/05/21 (Changelog entry made)
+	      	12/06/21 (Changelog entry made)
+
 ###########################################################################
 
                                 TODO
@@ -63,69 +65,5 @@ Returns:
           Temperature Ratio
           Nozzle Contour
           Area Ratio
-
-
-(A structure named nozzle with various properties)
-  
-###########################################################################
-
-Important Functions:
-
-          a  = speed of sound calculations
-          
-              Accepts:
-                      y = specific heat ratio
-                      R = gas constant
-                      t = temperature
-
-          ae = exit area
-          
-              Accepts:
-                      at = throat area
-                      me = exit mach
-                      y  = gamma
-
-          at = throat area
-          
-              Accepts:
-                      wt = weight flow rate
-                      pt = throat pressure
-                      R  = gas constant
-                      tt = throat temperature
-                      y  = specific heat ratio
-                      g  = acceleration due to gravity                       
-
-          me = exit mach
-          
-              Accepts:
-                      y  = specific heat ratio
-                      pc = chamber pressure
-                      pa = ambient pressure
-
-          pe = exit pressure
-          
-              Accepts:
-                      pt = throat pressure
-                      y  = specific heat ratio
-                      me = exit mach
-
-          pt = throat pressure
-          
-              Accepts:
-                      pc = chamber pressure
-                      y  = gamma
-
-          te = exit throat
-          
-              Accepts:
-                      tc = chamber pressure
-                      me = exit mach
-                      y  = specific heat ratio
-
-          tt = throat temperature
-          
-              Accepts:
-                      tc = chamber pressure
-                      y  = specific heat ratio
 
 ###########################################################################

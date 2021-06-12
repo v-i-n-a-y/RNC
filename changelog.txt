@@ -37,4 +37,10 @@ Made by Vinay Williams
     - Added Rao solver
     - Finished the plot and plot save flag implementation
 
+12/06/21
 
+Made by Vinay Williams
+    - Created an object for the nozzle
+    - Main call the object
+    - Removed excel inputs
+    - Moved old code to folder named code/deprecated
