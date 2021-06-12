@@ -1,3 +1,7 @@
+% RNC - ROCKET NOZZLE CALCULATOR
+%
+% Nozzle Class
+
 classdef nozzle
     
     % Initally defined variables
@@ -15,6 +19,7 @@ classdef nozzle
         diverging_angle
         converging_angle
         ratio
+        name
     end
     
     properties (Constant, Access = private)
@@ -50,10 +55,12 @@ classdef nozzle
         area_ratio
         R_dot                    % Gas Constant of Exhaust
         contour
-        
+        diagnostics
     end
     
     methods (Static)
+        
+        % Static function to plot the nozzle contour
         function plot(thenozzle)
             close all
             hold on
@@ -62,6 +69,47 @@ classdef nozzle
             
             plot(contour1.x.inner, contour1.y.inner);
             plot(contour1.x.inner, -contour1.y.inner);
+        end
+        
+s        % Static function to write contour points
+        function write(thenozzle, format, curve)
+            contour1 = thenozzle.contour; 
+           
+            if format == 1
+                disp("Outputting "+length(contour1.x.inner)+" sets of coordinates for ANSYS");
+                
+                fileID = fopen(thenozzle.name+'.txt','w');
+                for i = 1:length(contour1.x.inner)
+                    fprintf(fileID, curve+" "+i+" "+contour1.x.inner(i)+" "+contour1.y.inner(i)+" 0\n");
+                end
+                fclose(fileID);
+                
+            elseif format == 2
+                disp("CSV")
+            elseif format == 3
+                disp("Outputting "+length(contour1.x.inner)+" sets of coordinates for SOLIDWORKS");
+                
+                fileID = fopen(thenozzle.name+'.txt','w');
+                for i = 1:length(contour1.x.inner)
+                    fprintf(fileID,contour1.x.inner(i)+" "+contour1.y.inner(i)+" 0\n");
+                end
+                fclose(fileID);
+            else
+                disp("INVALID FLAG")
+            end
+        end
+        
+        % Function to write the diagnotics information on the nozzle to
+        % file
+        function writediagnostics(thenozzle)
+            fileID = fopen(thenozzle.name+"properties.txt","w");
+            fprintf(fileID, thenozzle.diagnostics);
+            fclose(fileID);
+        end
+        
+        % Static function to print diagnositcs to console
+        function printdiagnostics(thenozzle)
+            fprintf(thenozzle.diagnostics);
         end
     end
     
@@ -72,7 +120,8 @@ classdef nozzle
         function thisnozzle = nozzle(force, impulse, ...
                 mass_flow_rate_exhaust, y, chamber_pressure, ...
                 molar_mass_exhaust,chamber_temperature,altitude, ...
-                wall_thickness,kind, converging_angle, diverging_angle, ratio)
+                wall_thickness,kind, converging_angle, diverging_angle, ...
+                ratio, name)
             
             thisnozzle.force = force;
             thisnozzle.impulse = impulse;
@@ -84,6 +133,7 @@ classdef nozzle
             thisnozzle.wall_thickness = wall_thickness;
             thisnozzle.chamber_pressure = chamber_pressure*100000;
             thisnozzle.y = y;
+            thisnozzle.name = name;
             
             if kind == 3
                 if ~exist('converging_angle', 'var')
@@ -110,6 +160,9 @@ classdef nozzle
                     thisnozzle.ratio = ratio; 
                 end
             end
+            
+            
+            
         end
         
         % CALCULATIONS
@@ -325,7 +378,7 @@ classdef nozzle
             
             xw(1) = (thenozzle.throat_radius+SL(1)*P(1))/(SL(1)-tan(ambient_temperatureM));
             yw(1) = tan(ambient_temperatureM)*xw(1)+thenozzle.throat_radius;
-            X_P 2 = [P(1) xw];
+            X_P2 = [P(1) xw];
             Y_P2 = [P(2) yw];
             
 %             plot(X_P2,Y_P2,'g');
@@ -495,6 +548,36 @@ classdef nozzle
         %               Coming Soon
         %         end
         
+        function diagnostics = get.diagnostics(thenozzle)
+            
+            diagnostics = ...
+            "Force                 : "+thenozzle.force+"N\n"+...
+            "Impulse               : "+thenozzle.impulse+"Ns\n"+...
+            "Specific Impulse      : "+thenozzle.specific_impulse+"s\n"+...
+            "Exhaust Mass Flow Rate: "+thenozzle.mass_flow_rate_exhaust+"kg/s\n"+...
+            "Specific Heat Ratio   : "+thenozzle.y+"\n"+...
+            "Exhaust Molar Mass    : "+thenozzle.molar_mass_exhaust+"kg\n"+...
+            "Ambient Pressure      : "+thenozzle.ambient_pressure+"Pa\n"+...
+            "Chamber Pressure      : "+thenozzle.chamber_pressure+"Pa\n"+...
+            "Chamber Temperature   : "+thenozzle.chamber_temperature+"K\n"+...
+            "Burn Time             : "+thenozzle.burn_time+"s\n"+...
+            "Weigth Flow Rate      : "+thenozzle.weight_flow_rate+"N/s\n"+...
+            "Throat Radius         : "+thenozzle.throat_radius+"m\n"+...
+            "Throat Temperature    : "+thenozzle.throat_temperature+"K\n"+...
+            "Throat Area           : "+thenozzle.throat_area +"m^2\n"+...
+            "Throat Pressure       : "+thenozzle.throat_pressure+"Pa\n"+...
+            "Exit Area             : "+thenozzle.exit_area+"m^2\n"+...
+            "Exit Mach             : "+thenozzle.exit_mach+"\n"+...
+            "Exit Radius           : "+thenozzle.exit_radius+"m\n"+...
+            "Exit Speed of Sound   : "+thenozzle.exit_speed_sound+"m/s\n"+...
+            "Exit Mach             : "+thenozzle.exit_mach+"\n"+...
+            "Exit Velocity         : "+thenozzle.exit_velocity+"m/s\n"+...
+            "Exit Temperature      : "+thenozzle.exit_temperature+"K\n"+...
+            "Exit Pressure         : "+thenozzle.exit_pressure+"Pa\n";
+
+
+
+        end
     end
     
 end
