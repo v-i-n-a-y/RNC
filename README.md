@@ -1,5 +1,7 @@
 # RNC - Rocket Nozzle Calculator
 
+- Development ceased till further notice... pending additions include: aerospike functionality, stl export, regenerative cooling calculations. If you would like to assist please get into contact
+
 - Created as a tool for people who are learning about rocket nozzles calculations and are not familiar with coding to easily understand. Written initially for the Kingston University Rocket Engineering group (KURE).
 
 
